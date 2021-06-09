@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 jobs:
-  build:
+  build-test:
     runs-on: [ubuntu-latest]
     
     steps:
@@ -15,4 +15,11 @@ jobs:
         path: /tmp/composer-cache
         key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
       
-    - uses: php-actions/composer@v6
+    - name: Install new dependencies
+      uses: php-actions/composer@v6
+
+    - name: Run unit tests
+      uses: php-actions/composer@v6
+      with:
+        command: run-script
+        args: test
