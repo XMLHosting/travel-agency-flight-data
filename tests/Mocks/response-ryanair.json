@@ -1,0 +1,89 @@
+{
+  "termsOfUse": "https://www.ryanair.com/ie/en/corporate/terms-of-use=AGREED",
+  "currency": "EUR",
+  "currPrecision": 2,
+  "routeGroup": "CITY",
+  "tripType": "OTHER",
+  "upgradeType": "PLUS",
+  "trips": [
+    {
+      "origin": "AMS",
+      "originName": "Amsterdam",
+      "destination": "DUB",
+      "destinationName": "Dublin T1",
+      "routeGroup": "CITY",
+      "tripType": "OTHER",
+      "upgradeType": "PLUS",
+      "dates": [
+        {
+          "dateOut": "2021-08-05T00:00:00.000",
+          "flights": [
+            {
+              "faresLeft": -1,
+              "flightKey": "FR~3101~ ~~AMS~08/05/2021 10:05~DUB~08/05/2021 10:40~~",
+              "infantsLeft": 18,
+              "regularFare": {
+                "fareKey": "XZPIKJEXHDCDZUNO7HFCXL5DDEJSPQ4PTWQ6BD7M6EGDXSFZV3SKXFPOCZPUDONU7F7AWJITE2OT6RSJV3EKELIYJ464KPNONCVWG6VTVUDNWGCUTL7Y37BZTQZL7IPEOMTFKHJLVMDQDW3XDA35OKTNH2UKY5JL36N42ATRTJM2MLHJCC5YVIJHO7PZV3BPVMFUJJC2YSBDYADIJQXIXX7W4UCCBCBZTMGPOYY",
+                "fareClass": "W",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 30.99,
+                    "count": 1,
+                    "hasDiscount": true,
+                    "publishedFare": 40.99,
+                    "discountInPercent": 24,
+                    "hasPromoDiscount": false,
+                    "discountAmount": 10.0,
+                    "hasBogof": false
+                  }
+                ]
+              },
+              "operatedBy": "",
+              "segments": [
+                {
+                  "segmentNr": 1,
+                  "origin": "ABC",
+                  "destination": "DUB",
+                  "flightNumber": "FR 3103",
+                  "time": [
+                    "2021-08-05T10:05:00.000",
+                    "2021-08-05T10:40:00.000"
+                  ],
+                  "timeUTC": [
+                    "2021-08-05T08:05:00.000Z",
+                    "2021-08-05T09:40:00.000Z"
+                  ],
+                  "duration": "01:35"
+                },
+                {
+                  "segmentNr": 0,
+                  "origin": "AMS",
+                  "destination": "ABC",
+                  "flightNumber": "FR 3102",
+                  "time": [
+                    "2021-08-05T10:05:00.000",
+                    "2021-08-05T10:40:00.000"
+                  ],
+                  "timeUTC": [
+                    "2021-08-05T08:05:00.000Z",
+                    "2021-08-05T09:40:00.000Z"
+                  ],
+                  "duration": "01:35"
+                }
+              ],
+              "flightNumber": "FR 3101",
+              "time": ["2021-08-05T10:05:00.000", "2021-08-05T10:40:00.000"],
+              "timeUTC": [
+                "2021-08-05T08:05:00.000Z",
+                "2021-08-05T09:40:00.000Z"
+              ],
+              "duration": "01:35"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "serverTimeUTC": "2021-06-03T09:20:18.360Z"
+}
