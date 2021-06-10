@@ -17,18 +17,49 @@
         },
         "arrivalAirport": {
           "locationCode": "IBZ"
+        },
+        "pricingInfo": {
+          "totalPriceAllPassengers": 171.45,
+          "totalPriceOnePassenger": 57.15,
+          "baseFare": 27.96,
+          "taxSurcharge": 29.19,
+          "currencyCode": "EUR",
+          "productClass": "Basic"
+        }
+      },
+      "inboundFlight": {
+        "id": "IBZAMS20210808HV6342",
+        "departureDateTime": "2021-08-08T14:40:00",
+        "arrivalDateTime": "2021-08-08T17:20:00",
+        "marketingAirline": {
+          "companyShortName": "HV"
+        },
+        "flightNumber": 6342,
+        "departureAirport": {
+          "locationCode": "IBZ"
+        },
+        "arrivalAirport": {
+          "locationCode": "AMS"
+        },
+        "pricingInfo": {
+          "totalPriceAllPassengers": 153.0,
+          "totalPriceOnePassenger": 51.0,
+          "baseFare": 42.96,
+          "taxSurcharge": 8.04,
+          "currencyCode": "EUR",
+          "productClass": "Basic"
         }
       },
       "pricingInfoSum": {
-        "totalPriceAllPassengers": 171.45,
-        "totalPriceOnePassenger": 57.15,
-        "baseFare": 27.96,
-        "taxSurcharge": 29.19,
+        "totalPriceAllPassengers": 324.45,
+        "totalPriceOnePassenger": 108.15,
+        "baseFare": 70.92,
+        "taxSurcharge": 37.23,
         "currencyCode": "EUR",
         "productClass": "Basic"
       },
       "deeplink": {
-        "href": "https://www.transavia.com/nl-NL/bookingtool/flights/deeplink?ds=AMS&as=IBZ&ap=2&cp=1&od=1&om=8&oy=2021&utm_source=API&utm_medium=Public"
+        "href": "https://www.transavia.com/nl-NL/bookingtool/flights/deeplink?ds=AMS&as=IBZ&ap=2&cp=1&od=1&om=8&oy=2021&id=8&im=8&iy=2021&r=true&utm_source=API&utm_medium=Public"
       }
     }
   ]

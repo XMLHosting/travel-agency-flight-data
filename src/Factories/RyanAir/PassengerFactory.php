@@ -9,8 +9,6 @@ use XMLHosting\TravelAgency\FlightData\Models\Passenger;
 
 class PassengerFactory extends BaseFactory
 {
-    private $fares = [];
-
     const PROP_AGE_GROUP = 'type';
     const PROP_AMOUNT = 'count';
 
@@ -19,20 +17,12 @@ class PassengerFactory extends BaseFactory
         $ageGroup = $this->getMappedAgeGroup($data);
         $amount = Helpers::getProperty(self::PROP_AMOUNT, $data);
 
-        $fares = Helpers::getInstances(FareFactory::class, $this->fares);
+        $fares = Helpers::getInstances(FareFactory::class, [$data]);
 
         return Passenger::build()
             ->ageGroup($ageGroup)
             ->amount($amount)
             ->fares($fares);
-    }
-
-    public function getInstances(array $data): array
-    {
-        $this->fares = $data;
-        return array_map(function ($item) use ($data) {
-            return $this->getInstance($item);
-        }, $data);
     }
 
     private function getMappedAgeGroup(array $data): string
