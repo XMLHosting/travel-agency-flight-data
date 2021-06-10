@@ -1,22 +1,17 @@
 <?php
 namespace XMLHosting\TravelAgency\FlightData\Tests\Factories\RyanAir;
 
-use XMLHosting\TravelAgency\FlightData\Clients\RyanAirClient;
-use XMLHosting\TravelAgency\FlightData\Factories\RyanAir\TripFactory;
-use XMLHosting\TravelAgency\FlightData\Helpers;
-use XMLHosting\TravelAgency\FlightData\Tests\BaseTest;
+use XMLHosting\TravelAgency\FlightData\Models\Passenger;
 
-class PassengerFactoryTest extends BaseTest
+class PassengerFactoryTest extends BaseFactoryTest
 {
     private static $passengers;
 
     public static function setUpBeforeClass(): void
     {
-        $body = self::getJSONMock('response-ryanair');
-        $tripData = Helpers::getProperty(RyanAirClient::PROP_TRIPS, $body, []);
-        $trips = Helpers::getInstances(TripFactory::class, $tripData);
+        parent::setUpBeforeClass();
 
-        self::$passengers = $trips[0]->getFlights()[0][0]->getPassengers();
+        self::$passengers = self::$trips[0]->getFlights()[0][0]->getPassengers();
     }
 
     /** @test */
@@ -26,6 +21,10 @@ class PassengerFactoryTest extends BaseTest
         $actual = self::$passengers;
         $this->assertIsArray($actual);
         $this->assertCount($expected, $actual);
+
+        $expected = Passenger::class;
+        $actual = self::$passengers[0];
+        $this->assertInstanceOf($expected, $actual);
 
         $expected = 'adult';
         $actual = self::$passengers[0]->getAgeGroup();

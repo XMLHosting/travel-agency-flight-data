@@ -1,22 +1,18 @@
 <?php
 namespace XMLHosting\TravelAgency\FlightData\Tests\Factories\RyanAir;
 
-use XMLHosting\TravelAgency\FlightData\Clients\RyanAirClient;
-use XMLHosting\TravelAgency\FlightData\Factories\RyanAir\TripFactory;
-use XMLHosting\TravelAgency\FlightData\Helpers;
-use XMLHosting\TravelAgency\FlightData\Tests\BaseTest;
+use XMLHosting\TravelAgency\FlightData\Models\Flight;
+use XMLHosting\TravelAgency\FlightData\Models\Airport;
 
-class FlightFactoryTest extends BaseTest
+class FlightFactoryTest extends BaseFactoryTest
 {
     private static $flights;
 
     public static function setUpBeforeClass(): void
     {
-        $body = self::getJSONMock('response-ryanair');
-        $tripData = Helpers::getProperty(RyanAirClient::PROP_TRIPS, $body, []);
-        $trips = Helpers::getInstances(TripFactory::class, $tripData);
+        parent::setUpBeforeClass();
 
-        self::$flights = $trips[0]->getFlights();
+        self::$flights = self::$trips[0]->getFlights();
     }
 
     /** @test */
@@ -32,6 +28,10 @@ class FlightFactoryTest extends BaseTest
         $this->assertIsArray($actual);
         $this->assertCount($expected, $actual);
 
+        $expected = Flight::class;
+        $actual = self::$flights[0][0];
+        $this->assertInstanceOf($expected, $actual);
+
         $expected = 'FR';
         $actual = self::$flights[0][0]->getCarrier();
         $this->assertEquals($expected, $actual);
@@ -40,9 +40,17 @@ class FlightFactoryTest extends BaseTest
         $actual = self::$flights[0][0]->getNumber();
         $this->assertEquals($expected, $actual);
 
+        $expected = Airport::class;
+        $actual = self::$flights[0][0]->getOrigin();
+        $this->assertInstanceOf($expected, $actual);
+
         $expected = 'AMS';
         $actual = self::$flights[0][0]->getOrigin()->getCode();
         $this->assertEquals($expected, $actual);
+
+        $expected = Airport::class;
+        $actual = self::$flights[0][0]->getDestination();
+        $this->assertInstanceOf($expected, $actual);
 
         $expected = 'ABC';
         $actual = self::$flights[0][0]->getDestination()->getCode();

@@ -1,24 +1,11 @@
 <?php
 namespace XMLHosting\TravelAgency\FlightData\Tests\Factories\RyanAir;
 
-use XMLHosting\TravelAgency\FlightData\Clients\RyanAirClient;
-use XMLHosting\TravelAgency\FlightData\Factories\RyanAir\TripFactory;
-use XMLHosting\TravelAgency\FlightData\Helpers;
 use XMLHosting\TravelAgency\FlightData\Models\Airport;
 use XMLHosting\TravelAgency\FlightData\Models\Trip;
-use XMLHosting\TravelAgency\FlightData\Tests\BaseTest;
 
-class TripFactoryTest extends BaseTest
+class TripFactoryTest extends BaseFactoryTest
 {
-    private static $trips;
-
-    public static function setUpBeforeClass(): void
-    {
-        $body = self::getJSONMock('response-ryanair');
-        $tripData = Helpers::getProperty(RyanAirClient::PROP_TRIPS, $body, []);
-
-        self::$trips = Helpers::getInstances(TripFactory::class, $tripData);
-    }
 
     /** @test */
     public function can_get_instances()

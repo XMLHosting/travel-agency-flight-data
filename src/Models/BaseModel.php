@@ -10,7 +10,7 @@ abstract class BaseModel
 
     protected function set(string $name, $value): self
     {
-        if (property_exists($this, $name)) {
+        if (property_exists($this, $name) && $this->{$name} !== $value) {
             $this->{$name} = $value;
         }
 

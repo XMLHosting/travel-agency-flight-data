@@ -49,7 +49,7 @@ class Helpers
         ? $haystack[$needle] : $fallback;
     }
 
-    public static function getQueryArgs(array $args = []): string
+    public static function getQueryString(array $args = []): string
     {
         if (empty($args)) {
             return '';
