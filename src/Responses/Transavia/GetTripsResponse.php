@@ -17,7 +17,7 @@ class GetTripsResponse extends BaseResponse
             $value = json_decode($value, true);
 
             $tripData = Helpers::getProperty(self::PROP_TRIPS, $value, []);
-            $trips = TripFactory::getInstances($tripData);
+            $trips = Helpers::getInstances(TripFactory::class, $tripData);
         }
 
         return parent::body($trips);

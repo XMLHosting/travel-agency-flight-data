@@ -2,7 +2,7 @@
 namespace XMLHosting\TravelAgency\FlightData\Models;
 
 use \DateTime;
-use \DateTimeInterval;
+use \DateInterval;
 
 class Flight extends BaseModel
 {

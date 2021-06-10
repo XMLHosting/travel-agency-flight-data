@@ -41,12 +41,12 @@ class GetTripsRequest extends BaseRequest implements GetTripsRequestInterface
         return $this->addQuery('Destination', $airport);
     }
 
-    public function departAt(DateTime $when): self
+    public function departOn(DateTime $when): self
     {
         return $this->addQuery('DateOut', $when->format(self::DATE_FORMAT));
     }
 
-    public function returnAt(DateTime $when): self
+    public function returnOn(DateTime $when): self
     {
         $this->addQuery('RoundTrip', 'true');
         return $this->addQuery('DateIn', $when->format(self::DATE_FORMAT));

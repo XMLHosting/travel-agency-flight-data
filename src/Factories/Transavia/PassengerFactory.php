@@ -17,7 +17,7 @@ class PassengerFactory extends BaseFactory
         $subTotal = Helpers::getProperty(self::PROP_SUB_TOTAL, $data, 0);
         $amount = round($total / $subTotal);
 
-        $fares = Helpers::getInstances(FareFactory::class, [$data]);
+        $fares = Helpers::getInstances(FareFactory::class, [$data], []);
 
         return Passenger::build()
             ->amount($amount)

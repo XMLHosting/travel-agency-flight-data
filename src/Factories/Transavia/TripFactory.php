@@ -19,9 +19,9 @@ class TripFactory extends BaseFactory
     public function getInstance(array $data)
     {
         $origin = Helpers::getProperty(self::PROP_ORIGIN, $data);
-        $destination = Helpers::getInstance(self::PROP_DESTINATION, $data);
+        $destination = Helpers::getProperty(self::PROP_DESTINATION, $data);
 
-        $flightData = Helpers::getInstance(self::PROP_FLIGHTS, $data);
+        $flightData = Helpers::getProperty(self::PROP_FLIGHTS, $data, []);
         $flights = Helpers::getInstances(FlightFactory::class, $flightData);
 
         return Trip::build()

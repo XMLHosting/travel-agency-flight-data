@@ -1,5 +1,5 @@
 <?php
-namespace XMLHosting\TravelAgency\FlightData\Factories\RyanAir;
+namespace XMLHosting\TravelAgency\FlightData\Factories\Transavia;
 
 use XMLHosting\TravelAgency\FlightData\Factories\BaseFactory;
 use XMLHosting\TravelAgency\FlightData\Helpers;

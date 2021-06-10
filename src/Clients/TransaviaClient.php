@@ -12,7 +12,7 @@ class TransaviaClient extends BaseClient
         return [
             'base_uri' => Helpers::addTrailingSlash(getenv('TRANSAVIA_BASE_URI')),
             'headers' => [
-                'apiKey' => getenv('TRANSAVIA_API_KEY'),
+                'apiKey' => getenv('TRANSAVIA_CLIENT_SECRET'),
             ]
         ];
     }

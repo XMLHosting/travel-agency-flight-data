@@ -17,9 +17,9 @@ interface GetTripsRequest extends Request
      * Methods for configuring the travel period
      */
 
-    public function departAt(DateTime $when): self;
+    public function departOn(DateTime $when): self;
 
-    public function returnAt(DateTime $when): self;
+    public function returnOn(DateTime $when): self;
 
     /**
      * Methods for configuring seating
