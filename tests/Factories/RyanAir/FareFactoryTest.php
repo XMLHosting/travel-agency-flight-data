@@ -26,6 +26,10 @@ class FareFactoryTest extends BaseFactoryTest
         $actual = self::$fares[0];
         $this->assertInstanceOf($expected, $actual);
 
+        $expected = 'premium_economy';
+        $actual = self::$fares[0]->getClass();
+        $this->assertEquals($expected, $actual);
+
         $expected = 30.99;
         $actual = self::$fares[0]->getPrice();
         $this->assertEquals($expected, $actual);

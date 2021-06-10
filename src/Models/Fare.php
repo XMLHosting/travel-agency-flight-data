@@ -2,10 +2,10 @@
 namespace XMLHosting\TravelAgency\FlightData\Models;
 
 use XMLHosting\TravelAgency\FlightData\Hooks;
+use XMLHosting\TravelAgency\FlightData\Models\Enums\Classes;
 
 class Fare extends BaseModel
 {
-    const HOOK_GET_BASE_CLASS = 'get_base_class';
     const HOOK_GET_BASE_CURRENCY = 'get_base_currency';
 
     protected $class;
@@ -14,14 +14,13 @@ class Fare extends BaseModel
 
     public function class(string $value): self
     {
-        return $this->set('class', $value);
+        return $this->set('class', Classes::getName($value));
     }
 
     public function getClass(): ?string
     {
         if (empty($this->class)) {
-            $this->class = Hooks::apply(self::HOOK_GET_BASE_CLASS, [null]);
-            return $this->class;
+            return Classes::getDefaultName();
         }
 
         return $this->class;

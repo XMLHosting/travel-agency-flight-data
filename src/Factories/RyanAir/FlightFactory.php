@@ -18,6 +18,7 @@ class FlightFactory extends BaseFactory
     const PROP_DEPARTS_AT_LOCAL = ['time', 0];
     const PROP_ARRIVES_AT_UTC = ['timeUTC', 1];
     const PROP_ARRIVES_AT_LOCAL = ['time', 1];
+    const PROP_BASE_PASSENGER = 'regularFare';
     const PROP_PASSENGERS = ['regularFare', 'fares'];
 
     public function getInstance(array $data)
@@ -36,7 +37,12 @@ class FlightFactory extends BaseFactory
         $arrivesAtUTC = new DateTime(Helpers::getProperty(self::PROP_ARRIVES_AT_UTC, $data));
         $arrivesAtLocal = new DateTime(Helpers::getProperty(self::PROP_ARRIVES_AT_LOCAL, $data));
 
-        $passengerData = Helpers::getProperty(self::PROP_PASSENGERS, $data, []);
+        $passengerData = array_map(function($passenger) use ($data) {
+            $basePassenger = Helpers::getProperty(self::PROP_BASE_PASSENGER, $data, []);
+            $basePassenger = array_filter($basePassenger, 'is_scalar');
+            return array_merge($basePassenger, $passenger);
+        }, Helpers::getProperty(self::PROP_PASSENGERS, $data, []));
+
         $passengers = Helpers::getInstances(PassengerFactory::class, $passengerData);
 
         return Flight::build()

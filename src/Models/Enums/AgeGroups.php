@@ -3,15 +3,15 @@ namespace XMLHosting\TravelAgency\FlightData\Models\Enums;
 
 abstract class AgeGroups extends BaseEnum
 {
-    const Newborn = 0;
-    const Infant = 1;
-    const Toddler = 2;
-    const Child = 3;
-    const Teenager = 4;
-    const Adult = 5;
-    const Senior = 6;
+    const NEWBORN = 0;
+    const INFANT = 1;
+    const TODDLER = 2;
+    const CHILD = 3;
+    const TEENAGER = 4;
+    const ADULT = 5;
+    const SENIOR = 6;
 
     public static function getDefaultName(): string {
-        return 'Adult';
+        return 'adult';
     }
 }

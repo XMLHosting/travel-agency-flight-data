@@ -30,10 +30,10 @@ class PassengerFactory extends BaseFactory
         $needle = Helpers::getProperty(self::PROP_AGE_GROUP, $data);
 
         $haystack = [
-            AgeGroups::Adult => 'ADT',
-            AgeGroups::Teenager => 'TEEN',
-            AgeGroups::Child => 'CHD',
-            AgeGroups::Infant => 'INF',
+            AgeGroups::ADULT => 'ADT',
+            AgeGroups::TEENAGER => 'TEEN',
+            AgeGroups::CHILD => 'CHD',
+            AgeGroups::INFANT => 'INF',
         ];
 
         return Helpers::mapValueToKey($needle, $haystack);

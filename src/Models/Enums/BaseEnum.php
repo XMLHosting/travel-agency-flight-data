@@ -24,16 +24,25 @@ abstract class BaseEnum
 
     public static function isValidName($name)
     {
-        $keys = array_map('strtolower', array_keys(self::getConstants()));
+        $name = trim(strtolower($name));
 
-        return in_array(strtolower($name), $keys, true);
+        return count(array_map(function ($constant) use ($name) {
+            $constant = strtolower($constant);
+            if ($constant === $name) {
+                return true;
+            }
+
+            return preg_replace('/_/', ' ', $constant) === $name; 
+        }, array_keys(self::getConstants()))) === 1;
     }
 
     public static function isValidValue($value)
     {
         $values = array_values(self::getConstants());
 
-        return in_array(intval($value), $values, true);
+        $value = is_numeric($value) ? intval($value) : trim(strtolower($value));
+
+        return in_array($value, $values, true);
     }
 
     public static function getName($value)
@@ -42,7 +51,8 @@ abstract class BaseEnum
         if (self::isValidName($value)) {
             $name = $value;
         } elseif (self::isValidValue($value)) {
-            $name = array_search(intval($value), self::getConstants(), true);
+            $value = is_numeric($value) ? intval($value) : trim(strtolower($value));
+            $name = array_search($value, self::getConstants(), true);
         }
 
         return strtolower($name !== false ? $name : static::getDefaultName());

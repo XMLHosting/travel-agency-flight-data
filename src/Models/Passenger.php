@@ -26,6 +26,10 @@ class Passenger extends BaseModel
 
     public function getAgeGroup(): string
     {
+        if (empty($this->ageGroup)) {
+            return AgeGroups::getDefaultName();
+        }
+
         return $this->ageGroup;
     }
 

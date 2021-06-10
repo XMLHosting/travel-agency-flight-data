@@ -7,12 +7,16 @@ use XMLHosting\TravelAgency\FlightData\Models\Fare;
 
 class FareFactory extends BaseFactory
 {
+    const PROP_CLASS = 'fareClass';
     const PROP_PRICE = 'amount';
 
     public function getInstance(array $data)
     {
+        $class = Helpers::getProperty(self::PROP_CLASS, $data);
         $price = Helpers::getProperty(self::PROP_PRICE, $data);
         
-        return Fare::build()->price($price);
+        return Fare::build()
+            ->class($class)
+            ->price($price);
     }
 }
