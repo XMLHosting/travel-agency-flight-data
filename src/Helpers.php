@@ -50,7 +50,8 @@ class Helpers
         ? $haystack[$needle] : $fallback;
     }
 
-    public static function getConfigProperty(string $needle, $fallback = null) {
+    public static function getConfigProperty(string $needle, $fallback = null)
+    {
         $env = getenv($needle);
         if (!empty($env)) {
             return $env;
@@ -93,6 +94,32 @@ class Helpers
         foreach ($haystack as $key => $subHaystack) {
             if (is_array($subHaystack) && in_array($needle, $subHaystack, true)) {
                 $result = $key;
+            }
+        }
+
+        return $result;
+    }
+
+    public static function mergeTrips(array $getTripsResponses): array
+    {
+        $getTripsResponses = array_filter(array_values($getTripsResponses));
+        if (count($getTripsResponses) <= 1) {
+            return $getTripsResponses[0];
+        }
+
+        $result = [];
+        foreach ($getTripsResponses as $getTripsResponse) {
+            foreach ($getTripsResponse as $trip) {
+                $origin = $trip->getOrigin()->getCode();
+                $destination = $trip->getDestination()->getCode();
+                $key = $origin . '-' . $destination;
+
+                $flights = $trip->getFlights();
+                if (array_key_exists($key, $result)) {
+                    $flights = array_merge($result[$key]->getFlights(), $flights);
+                }
+
+                $result[$key] = $trip->flights($flights);
             }
         }
 
