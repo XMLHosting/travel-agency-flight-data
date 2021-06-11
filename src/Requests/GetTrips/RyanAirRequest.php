@@ -1,19 +1,30 @@
 <?php
-namespace XMLHosting\TravelAgency\FlightData\Requests\RyanAir;
+namespace XMLHosting\TravelAgency\FlightData\Requests\GetTrips;
 
 use DateTime;
-use XMLHosting\TravelAgency\FlightData\Responses\Response;
 use XMLHosting\TravelAgency\FlightData\Requests\BaseRequest;
-use XMLHosting\TravelAgency\FlightData\Responses\RyanAir\GetTripsResponse;
-use XMLHosting\TravelAgency\FlightData\Requests\GetTripsRequest as GetTripsRequestInterface;
+use XMLHosting\TravelAgency\FlightData\Requests\GetTrips\Request;
+use XMLHosting\TravelAgency\FlightData\Requests\GetTrips\SupportMultipleAirports;
+use XMLHosting\TravelAgency\FlightData\Responses\GetTrips\RyanAirResponse;
+use XMLHosting\TravelAgency\FlightData\Responses\Response;
 
-class GetTripsRequest extends BaseRequest implements GetTripsRequestInterface
+class RyanAirRequest extends BaseRequest implements Request
 {
+    use SupportMultipleAirports;
+
     const DATE_FORMAT = 'Y-m-d';
+
+    private $origin;
+    private $destination;
 
     protected function init(): void
     {
         $this->addQuery('ToUs', 'AGREED');
+    }
+
+    public function send(): Response
+    {
+        return $this->addSupportForMultipleAirports();
     }
 
     public function getMethod(): string
@@ -28,16 +39,20 @@ class GetTripsRequest extends BaseRequest implements GetTripsRequestInterface
 
     public function getResponseBuilder(): Response
     {
-        return GetTripsResponse::build();
+        return RyanAirResponse::build();
     }
 
     public function origin(string $airport): self
     {
+        $this->origin = $airport;
+
         return $this->addQuery('Origin', $airport);
     }
 
     public function destination(string $airport): self
     {
+        $this->destination = $airport;
+
         return $this->addQuery('Destination', $airport);
     }
 

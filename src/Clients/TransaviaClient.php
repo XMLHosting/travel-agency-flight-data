@@ -2,8 +2,8 @@
 namespace XMLHosting\TravelAgency\FlightData\Clients;
 
 use XMLHosting\TravelAgency\FlightData\Helpers;
-use XMLHosting\TravelAgency\FlightData\Requests\GetTripsRequest as GetTripsRequestInterface;
-use XMLHosting\TravelAgency\FlightData\Requests\Transavia\GetTripsRequest;
+use XMLHosting\TravelAgency\FlightData\Requests\GetTrips\Request as GetTripsRequestInterface;
+use XMLHosting\TravelAgency\FlightData\Requests\GetTrips\TransaviaRequest as GetTripsRequest;
 
 class TransaviaClient extends BaseClient
 {
@@ -19,7 +19,8 @@ class TransaviaClient extends BaseClient
         ];
     }
 
-    public function getAirlines(): array {
+    public function getAirlines(): array
+    {
         return ['HV'];
     }
 

@@ -2,8 +2,8 @@
 namespace XMLHosting\TravelAgency\FlightData\Clients;
 
 use XMLHosting\TravelAgency\FlightData\Helpers;
-use XMLHosting\TravelAgency\FlightData\Requests\GetTripsRequest as GetTripsRequestInterface;
-use XMLHosting\TravelAgency\FlightData\Requests\RyanAir\GetTripsRequest;
+use XMLHosting\TravelAgency\FlightData\Requests\GetTrips\RyanAirRequest as GetTripsRequest;
+use XMLHosting\TravelAgency\FlightData\Requests\GetTrips\Request as GetTripsRequestInterface;
 
 class RyanAirClient extends BaseClient
 {

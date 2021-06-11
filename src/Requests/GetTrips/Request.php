@@ -1,9 +1,10 @@
 <?php
-namespace XMLHosting\TravelAgency\FlightData\Requests;
+namespace XMLHosting\TravelAgency\FlightData\Requests\GetTrips;
 
+use XMLHosting\TravelAgency\FlightData\Requests\Request as BaseRequest;
 use \DateTime;
 
-interface GetTripsRequest extends Request
+interface Request extends BaseRequest
 {
     /**
      * Methods for configuring the trip's location

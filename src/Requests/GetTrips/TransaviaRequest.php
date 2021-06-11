@@ -1,26 +1,27 @@
 <?php
-namespace XMLHosting\TravelAgency\FlightData\Requests\Transavia;
+namespace XMLHosting\TravelAgency\FlightData\Requests\GetTrips;
 
 use DateTime;
-use XMLHosting\TravelAgency\FlightData\Responses\Response;
 use XMLHosting\TravelAgency\FlightData\Requests\BaseRequest;
-use XMLHosting\TravelAgency\FlightData\Responses\Transavia\GetTripsResponse;
-use XMLHosting\TravelAgency\FlightData\Requests\GetTripsRequest as GetTripsRequestInterface;
+use XMLHosting\TravelAgency\FlightData\Responses\GetTrips\TransaviaResponse;
+use XMLHosting\TravelAgency\FlightData\Responses\Response;
 
-class GetTripsRequest extends BaseRequest implements GetTripsRequestInterface
+class TransaviaRequest extends BaseRequest implements Request
 {
     const SEARCH_IN_DAY_DATE_FORMAT = 'Ymd';
     const SEARCH_IN_MONTH_DATE_FORMAT = 'Ym';
 
     protected $dateFormat = self::SEARCH_IN_DAY_DATE_FORMAT;
 
-    public function searchInDay(bool $value = true) {
+    public function searchInDay(bool $value = true)
+    {
         if ($value) {
             $this->dateFormat = self::SEARCH_IN_DAY_DATE_FORMAT;
         }
     }
 
-    public function searchInMonth(bool $value = true) {
+    public function searchInMonth(bool $value = true)
+    {
         if ($value) {
             $this->dateFormat = self::SEARCH_IN_MONTH_DATE_FORMAT;
         }
@@ -38,7 +39,7 @@ class GetTripsRequest extends BaseRequest implements GetTripsRequestInterface
 
     public function getResponseBuilder(): Response
     {
-        return GetTripsResponse::build();
+        return TransaviaResponse::build();
     }
 
     public function origin(string $airport): self

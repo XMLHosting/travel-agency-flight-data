@@ -6,7 +6,7 @@ use XMLHosting\TravelAgency\FlightData\Clients\Client;
 use XMLHosting\TravelAgency\FlightData\Helpers;
 use XMLHosting\TravelAgency\FlightData\Responses\Response;
 
-abstract class BaseRequest
+abstract class BaseRequest implements Request
 {
     protected $client;
     protected $queries = [];

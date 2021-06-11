@@ -6,9 +6,15 @@ abstract class BaseResponse implements Response
     protected $statusCode = 500;
     protected $body;
 
+    protected abstract function parseBody($body);
+
     public static function build()
     {
         return new static;
+    }
+
+    public function isSuccessful(): bool {
+        return $this->getStatusCode() === 200 && !empty($this->getBody());
     }
 
     public function statusCode(int $value): self
@@ -23,6 +29,10 @@ abstract class BaseResponse implements Response
 
     public function body($value): self
     {
+        if ($this->isSuccessful()) {
+            $value = $this->parseBody($value);
+        }
+
         return $this->set('body', $value);
     }
 
