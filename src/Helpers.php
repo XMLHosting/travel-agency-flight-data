@@ -1,6 +1,7 @@
 <?php
 namespace XMLHosting\TravelAgency\FlightData;
 
+use Dotenv\Dotenv;
 use XMLHosting\TravelAgency\FlightData\Factories\Factory;
 
 class Helpers
@@ -47,6 +48,24 @@ class Helpers
 
         return is_array($haystack) && array_key_exists($needle, $haystack)
         ? $haystack[$needle] : $fallback;
+    }
+
+    public static function getConfigProperty(string $needle, $fallback = null) {
+        $env = getenv($needle);
+        if (!empty($env)) {
+            return $env;
+        }
+
+        $dir = getenv('APP_ROOT');
+        if (empty($dir)) {
+            $parts = explode('/vendor', __DIR__);
+            $dir = $parts[0];
+        }
+
+        $dotenv = Dotenv::createImmutable($dir);
+        $dotenv->load();
+
+        return array_key_exists($needle, $_ENV) ? $_ENV[$needle] : $fallback;
     }
 
     public static function getQueryString(array $args = []): string
