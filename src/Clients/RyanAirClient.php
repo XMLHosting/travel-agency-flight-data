@@ -16,6 +16,10 @@ class RyanAirClient extends BaseClient
         ];
     }
 
+    public function getAirlines(): array {
+        return ['FR'];
+    }
+
     public function getTrips(): GetTripsRequestInterface
     {
         return GetTripsRequest::build($this);

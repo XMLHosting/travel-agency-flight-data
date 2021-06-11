@@ -19,6 +19,10 @@ class TransaviaClient extends BaseClient
         ];
     }
 
+    public function getAirlines(): array {
+        return ['HV'];
+    }
+
     public function getTrips(): GetTripsRequestInterface
     {
         return GetTripsRequest::build($this);
