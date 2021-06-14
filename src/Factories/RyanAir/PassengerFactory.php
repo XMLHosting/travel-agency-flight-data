@@ -25,7 +25,7 @@ class PassengerFactory extends BaseFactory
             ->fares($fares);
     }
 
-    private function getMappedAgeGroup(array $data): string
+    private function getMappedAgeGroup(array $data): ?string
     {
         $needle = Helpers::getProperty(self::PROP_AGE_GROUP, $data);
 
@@ -36,6 +36,8 @@ class PassengerFactory extends BaseFactory
             AgeGroups::INFANT => 'INF',
         ];
 
-        return Helpers::mapValueToKey($needle, $haystack);
+        $result = array_search($needle, $haystack);
+
+        return $result !== false ? $result : null;
     }
 }

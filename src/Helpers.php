@@ -69,35 +69,26 @@ class Helpers
         return array_key_exists($needle, $_ENV) ? $_ENV[$needle] : $fallback;
     }
 
-    public static function getQueryString(array $args = []): string
+    public static function getQueryString(array $args = [], bool $boolToNumeric = false): string
     {
         if (empty($args)) {
             return '';
         }
 
-        return '?' . implode('&', $args);
+        $boolMap = [
+            false => $boolToNumeric ? 0 : 'false',
+            true => $boolToNumeric ? 1 : 'true',
+        ];
+
+        return '?' . implode('&', array_map(function ($key, $value) use ($boolMap) {
+            $value = is_bool($value) ? $boolMap[$value] : $value;
+            return $key . '=' . $value;
+        }, array_keys($args), $args));
     }
 
     public static function addTrailingSlash(string $value): string
     {
         return rtrim($value, '/') . '/';
-    }
-
-    public static function mapValueToKey(string $needle, array $haystack)
-    {
-        $search = array_search($needle, $haystack, true);
-        if ($search !== false) {
-            return $search;
-        }
-
-        $result = null;
-        foreach ($haystack as $key => $subHaystack) {
-            if (is_array($subHaystack) && in_array($needle, $subHaystack, true)) {
-                $result = $key;
-            }
-        }
-
-        return $result;
     }
 
     public static function mergeTrips(array $getTripsResponses): array
