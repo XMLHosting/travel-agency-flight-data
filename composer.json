@@ -25,7 +25,6 @@
     },
     "require": {
         "guzzlehttp/guzzle": "^7.3",
-        "symfony/cache": "^5.3",
         "vlucas/phpdotenv": "^5.3"
     }
 }

@@ -6,7 +6,7 @@ use XMLHosting\TravelAgency\FlightData\Helpers;
 use XMLHosting\TravelAgency\FlightData\Models\Fare;
 use XMLHosting\TravelAgency\FlightData\Tests\BaseTest;
 use XMLHosting\TravelAgency\FlightData\Factories\RyanAir\TripFactory;
-use XMLHosting\TravelAgency\FlightData\Responses\RyanAir\GetTripsResponse;
+use XMLHosting\TravelAgency\FlightData\Responses\GetTrips\RyanAirResponse as GetTripsResponse;
 
 abstract class BaseFactoryTest extends BaseTest
 {

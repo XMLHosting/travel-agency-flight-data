@@ -3,7 +3,7 @@ namespace XMLHosting\TravelAgency\FlightData\Tests\Factories\Transavia;
 
 use XMLHosting\TravelAgency\FlightData\Factories\Transavia\TripFactory;
 use XMLHosting\TravelAgency\FlightData\Helpers;
-use XMLHosting\TravelAgency\FlightData\Responses\Transavia\GetTripsResponse;
+use XMLHosting\TravelAgency\FlightData\Responses\GetTrips\TransaviaResponse as GetTripsResponse;
 use XMLHosting\TravelAgency\FlightData\Tests\BaseTest;
 
 abstract class BaseFactoryTest extends BaseTest
