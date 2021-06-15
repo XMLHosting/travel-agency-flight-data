@@ -6,4 +6,9 @@
             <directory>tests</directory>
         </testsuite>
     </testsuites>
+    <php>
+        <env name="RYANAIR_BASE_URI" value="https://www.ryanair.com/api/booking/v4/nl-nl" force="true" />
+        <env name="TRANSAVIA_BASE_URI" value="https://tst.api.transavia.com/v1" force="true" />
+        <env name="TRANSAVIA_CLIENT_SECRET" value="1ea9517f84584ac2b01167e6b97aa272" force="true" />
+    </php>
 </phpunit>

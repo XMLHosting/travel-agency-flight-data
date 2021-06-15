@@ -13,8 +13,8 @@ class FlightFactory extends BaseFactory
 {
     const PROP_CARRIER = ['marketingAirline', 'companyShortName'];
     const PROP_NUMBER = 'flightNumber';
-    const PROP_DEPARTS_AT_LOCAL = 'departureDateTime';
-    const PROP_ARRIVES_AT_LOCAL = 'arrivalDateTime';
+    const PROP_DEPARTS_AT_UTC = 'departureDateTime';
+    const PROP_ARRIVES_AT_UTC = 'arrivalDateTime';
     const PROP_PASSENGERS = 'pricingInfo';
 
     public function getInstance(array $data)
@@ -25,8 +25,8 @@ class FlightFactory extends BaseFactory
         $origin = Helpers::getInstance(AirportOriginFactory::class, $data);
         $destination = Helpers::getInstance(AirportDestinationFactory::class, $data);
 
-        $departsAtLocal = new DateTime(Helpers::getProperty(self::PROP_DEPARTS_AT_LOCAL, $data));
-        $arrivesAtLocal = new DateTime(Helpers::getProperty(self::PROP_ARRIVES_AT_LOCAL, $data));
+        $departsAtUTC = new DateTime(Helpers::getProperty(self::PROP_DEPARTS_AT_UTC, $data));
+        $arrivesAtUTC = new DateTime(Helpers::getProperty(self::PROP_ARRIVES_AT_UTC, $data));
 
         $passengerData = Helpers::getProperty(self::PROP_PASSENGERS, $data, []);
         $passengers = Helpers::getInstances(PassengerFactory::class, [$passengerData]);
@@ -36,8 +36,8 @@ class FlightFactory extends BaseFactory
             ->number($number)
             ->origin($origin)
             ->destination($destination)
-            ->departsAtLocal($departsAtLocal)
-            ->arrivesAtLocal($arrivesAtLocal)
+            ->departsAtUTC($departsAtUTC)
+            ->arrivesAtUTC($arrivesAtUTC)
             ->passengers($passengers);
     }
 

@@ -29,6 +29,8 @@ abstract class BaseResponse implements Response
 
     public function body($value): self
     {
+        $this->body = $value;
+
         if ($this->isSuccessful()) {
             $value = $this->parseBody($value);
         }

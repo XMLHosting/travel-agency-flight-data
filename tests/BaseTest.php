@@ -9,7 +9,7 @@ abstract class BaseTest extends TestCase {
         $file = __DIR__ . '/Mocks/' . $fileName . '.json';
 
         if (!file_exists($file)) {
-            throw new Exception("File not found: $file");
+            throw new \Exception("File not found: $file");
         }
 
         $contents = file_get_contents($file);
